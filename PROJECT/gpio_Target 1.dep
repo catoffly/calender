@@ -1,0 +1,13 @@
+Dependencies for Project 'gpio', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Startup.s)(0x5209AB70)(--cpu ARM7TDMI -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (..\USER\main.c)(0x576947A0)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I..\HARDWARE\DELAY -I..\HARDWARE\LCD1602-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC21xx.H)(0x5209AA44)
+I (..\HARDWARE\LCD1602\lcd1602.h)(0x574674C1)
+I (..\HARDWARE\DELAY\delay.h)(0x574668AF)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54199D7C)
+F (..\HARDWARE\LCD1602\lcd1602.c)(0x576944B9)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I..\HARDWARE\DELAY -I..\HARDWARE\LCD1602-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\lcd1602.o --omf_browse .\lcd1602.crf --depend .\lcd1602.d)
+I (..\HARDWARE\LCD1602\lcd1602.h)(0x574674C1)
+I (C:\Keil_v5\ARM\Inc\Philips\LPC214X.H)(0x5209AA44)
+I (..\HARDWARE\DELAY\delay.h)(0x574668AF)
+F (..\HARDWARE\DELAY\delay.c)(0x574668BB)(-c --cpu ARM7TDMI -g -O0 --apcs=interwork -I..\HARDWARE\DELAY -I..\HARDWARE\LCD1602-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\CMSIS\Include-I C:\Keil_v5\ARM\Inc\Philips-o .\delay.o --omf_browse .\delay.crf --depend .\delay.d)
+I (..\HARDWARE\DELAY\delay.h)(0x574668AF)

@@ -1,0 +1,9 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\main.o"
+".\lcd1602.o"
+".\delay.o"
+--strict --scatter ".\gpio.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\gpio.map" -o .\gpio.axf
