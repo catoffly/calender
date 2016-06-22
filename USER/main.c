@@ -2,6 +2,7 @@
 #include "lcd1602.h"
 #include "delay.h"
 #include "stdio.h"
+#include "sys.h"
 
 #define LED1 1<<6 //P0.6
 #define BEEP 1<<5 //P0.5
@@ -26,7 +27,12 @@ unsigned char nian[5]={2,0,1,6};
 unsigned char yue[3]={0,6};
 unsigned char	ri[3]={2,1};
 unsigned char week[7][4]={"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
-unsigned char jj[2]="/";
+unsigned char	week_num=0;
+unsigned char shi[3]={0,0};
+unsigned char fen[3]={0,0};
+unsigned char miao[3]={0,0};
+unsigned char jj[3]="/:";
+unsigned char hanzi[3][3]={"年","月","日"};
  
 int FERQ = 500,FERQ1;
 
@@ -84,21 +90,47 @@ int main(void)
 	{
 		LcdWriteData(nian[i]+0x30);
 	}
-	LcdWriteData(jj[0]);
-	for(i=0; i<2; i++)//年
+	for(i=0; i<2; i++)//年 汉字
+	{
+		LcdWriteData(hanzi[0][i]);
+	}
+	for(i=0; i<2; i++)//月
 	{
 		LcdWriteData(yue[i]+0x30);
 	}
-	LcdWriteData(jj[0]);
-	for(i=0; i<2; i++)//年
+	for(i=0; i<2; i++)//月 汉字
+	{
+		LcdWriteData(hanzi[1][i]);
+	}
+	for(i=0; i<2; i++)//日
 	{
 		LcdWriteData(ri[i]+0x30);
+	}
+	for(i=0; i<2; i++)//月 汉字
+	{
+		LcdWriteData(hanzi[2][i]);
 	}
 	LcdWriteCom(0xd3); //设置坐标在第一行
 	for(i=0; i<3; i++)//星期
 	{
 		LcdWriteData(week[2][i]);
 	}
+		LcdWriteCom(0xca);
+	for(i=0; i<2; i++)//时
+	{
+		LcdWriteData(shi[i]+0x30);
+	}
+	LcdWriteData(jj[1]);
+	for(i=0; i<2; i++)//分
+	{
+		LcdWriteData(fen[i]+0x30);
+	}
+	LcdWriteData(jj[1]);
+	for(i=0; i<2; i++)//miao
+	{
+		LcdWriteData(miao[i]+0x30);
+	}
+	
 	showLCD();
 
 	IO0DIR |= LED1;

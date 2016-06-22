@@ -73,7 +73,10 @@ void LcdInit(void)//LCD初始化子程序
 	LcdIO_Init();
 	
  	LcdWriteCom(0x38);  ////8位形式，两行字符。
+	LcdWriteCom(0x0c);  //开显示不显示光标
+	LcdWriteCom(0x06);  //写一个指针加1
 	LcdWriteCom(0x01);  //清屏
+	LcdWriteCom(0x80);  //设置数据指针起点
 	LcdWriteCom(0x60);  //设置数据指针起点
 	LcdWriteCom(0xB0);  //设置数据指针起点
 }
