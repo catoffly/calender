@@ -69,39 +69,39 @@ void __irq IRQ_Eint3(void)
 }	
 void __irq IRQ_Timr0(void)//定时器中断
 {
-				miao[1]++;
-				if(miao[1]==10)
-				{
-					miao[0]++;
-					miao[1]=0;
-				}
-				if(miao[0]==6)
-				{
-					miao[0]=0;
-					fen[1]++;
-				}
-				if(fen[1]==10)
-				{
-					fen[1]=0;
-					fen[0]++;
-				}
-				if(fen[0]==6)
-				{
-					fen[0]=0;
-					shi[1]++;
-				}
-				if(shi[1]==10)
-				{
-					shi[1]=0;
-					shi[0]++;
-				}
-				if(shi[0]==2&&shi[1]==4)
-				{
-					shi[0]=0;
-					shi[1]=0;
-					week_num++;
-					ri[1]++;
-				}
+//				miao[1]++;
+//				if(miao[1]==10)
+//				{
+//					miao[0]++;
+//					miao[1]=0;
+//				}
+//				if(miao[0]==6)
+//				{
+//					miao[0]=0;
+//					fen[1]++;
+//				}
+//				if(fen[1]==10)
+//				{
+//					fen[1]=0;
+//					fen[0]++;
+//				}
+//				if(fen[0]==6)
+//				{
+//					fen[0]=0;
+//					shi[1]++;
+//				}
+//				if(shi[1]==10)
+//				{
+//					shi[1]=0;
+//					shi[0]++;
+//				}
+//				if(shi[0]==2&&shi[1]==4)
+//				{
+//					shi[0]=0;
+//					shi[1]=0;
+//					week_num++;
+//					ri[1]++;
+//				}
 				//jie();
 				T0IR = 0x04;     
 				VICVectAddr = 0x00;    
@@ -135,10 +135,13 @@ void Timer0Init(void)
 int main(void)
 {
 	unsigned char i;
+	sec=SEC;
 	
 	LcdInit();
 	eint();
 	Timer0Init();
+	RTC_init();
+	RTC_int_ini();
 	
 //	LcdWriteCom(0xc1); //设置坐标在第一行
 //	for(i=0; i<4; i++)//年
