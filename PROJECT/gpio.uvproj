@@ -413,6 +413,11 @@
               <FileType>1</FileType>
               <FilePath>..\USER\main.c</FilePath>
             </File>
+            <File>
+              <FileName>jiemian.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USER\jiemian.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

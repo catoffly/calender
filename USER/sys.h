@@ -13,8 +13,8 @@ extern unsigned char fen[3];
 extern unsigned char miao[3];
 extern unsigned char jj[3];
 extern unsigned char hanzi[3][3];
-
-
+void jie (void);
+void xingqi(void);
 
 
 #endif

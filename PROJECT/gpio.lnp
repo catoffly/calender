@@ -1,6 +1,7 @@
 --cpu ARM7TDMI
 ".\startup.o"
 ".\main.o"
+".\jiemian.o"
 ".\lcd1602.o"
 ".\delay.o"
 --strict --scatter ".\gpio.sct"
