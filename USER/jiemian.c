@@ -9,6 +9,7 @@
 
 
 int secflag,month,day,hour,min,sec=0,weeks,year,ctemp;
+int month2,day2,hour2,min2,sec2,weeks2,year2;
 int year1,month1,sec1,day1,hour1,min1;
 int timet,datet;
 void jie(void)
@@ -50,7 +51,7 @@ void jie(void)
 	
 	
 	
-	
+	//LcdWriteCom(0x01);  //清屏
 	LcdWriteCom(0xc1); //设置坐标在第一行
 	
 	
@@ -106,8 +107,8 @@ void jie(void)
 	{
 		LcdWriteData(miao[i]+0x30);
 	}
-	LcdWriteCom(0xd8); //设置坐标在第一行
-	LcdWriteData(state_s+0x30);
+//	LcdWriteCom(0xd8); //设置坐标在第一行
+//	LcdWriteData(state_s+0x30);
 	
 	LcdWriteCom(0xda); //设置坐标在第一行
 	for(i=0; i<6; i++)//日 汉字
@@ -172,15 +173,12 @@ void __irq RTC_int(void)
    ILR=0X01;
    VICVectAddr=0x00;
    secflag=1;
-//	if(fanzhuan==1)
-//		fanzhuan=0;
-//	else
-//		fanzhuan=1;
+
 }
 void RTC_int_ini(void)
 {
    VICIntSelect&=~(1<<RTC_NUM);
-   VICVectCntl2=0x20|RTC_NUM;
-   VICVectAddr2=(unsigned int)RTC_int;
+   VICVectCntl0=0x20|RTC_NUM;
+   VICVectAddr0=(unsigned int)RTC_int;
    VICIntEnable=(1<<RTC_NUM);
 }
