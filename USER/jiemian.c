@@ -49,28 +49,39 @@ void jie(void)
 	miao[1]=sec1;
 	
 	
+	
+	
 	LcdWriteCom(0xc1); //设置坐标在第一行
+	
+	
 	for(i=0; i<4; i++)//年
 	{
 		LcdWriteData(nian[i]+0x30);
 	}
+
+
 	for(i=0; i<2; i++)//年 汉字
 	{
 		LcdWriteData(hanzi[0][i]);
 	}
+
 	for(i=0; i<2; i++)//月
 	{
 		LcdWriteData(yue[i]+0x30);
 	}
+	
+	
 	for(i=0; i<2; i++)//月 汉字
 	{
 		LcdWriteData(hanzi[1][i]);
 	}
+
 	for(i=0; i<2; i++)//日
 	{
 		LcdWriteData(ri[i]+0x30);
 	}
-	for(i=0; i<2; i++)//月 汉字
+
+	for(i=0; i<2; i++)//日 汉字
 	{
 		LcdWriteData(hanzi[2][i]);
 	}
@@ -79,6 +90,7 @@ void jie(void)
 	{
 		LcdWriteData(week[week_num][i]);
 	}
+
 		LcdWriteCom(0xca);
 	for(i=0; i<2; i++)//时
 	{
@@ -94,6 +106,15 @@ void jie(void)
 	{
 		LcdWriteData(miao[i]+0x30);
 	}
+	LcdWriteCom(0xd8); //设置坐标在第一行
+	LcdWriteData(state_s+0x30);
+	
+	LcdWriteCom(0xda); //设置坐标在第一行
+	for(i=0; i<6; i++)//日 汉字
+	{
+		LcdWriteData(zi[state_s][i]);
+	}
+	
 	
 }
 void xingqi(void)
@@ -125,13 +146,15 @@ void RTC_init(void)
    CCR=0X12;
    CIIR=0X01;
    ILR=0X03;
-   YEAR=2016;
-   MONTH=06;
-   DOM=22;
-   DOW=2;
-   HOUR=18;
-   MIN=03;
-   SEC=sec;
+
+	 YEAR=year;
+	 MONTH=month;
+	 DOM=day;
+	 DOW=weeks;
+	 HOUR=hour;
+	 MIN=min;
+	 SEC=sec;
+	
    CCR=0X11;
    secflag=0;
 }
@@ -149,6 +172,10 @@ void __irq RTC_int(void)
    ILR=0X01;
    VICVectAddr=0x00;
    secflag=1;
+//	if(fanzhuan==1)
+//		fanzhuan=0;
+//	else
+//		fanzhuan=1;
 }
 void RTC_int_ini(void)
 {
