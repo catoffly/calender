@@ -116,17 +116,17 @@ ARM Macro Assembler    Page 2
    62 00000000 00000000 
                        ABT_Stack_Size
                                EQU              0x00000000
-   63 00000000 00000200 
+   63 00000000 00000000 
                        FIQ_Stack_Size
-                               EQU              0x00000200
-   64 00000000 00000200 
+                               EQU              0x00000000
+   64 00000000 00000080 
                        IRQ_Stack_Size
-                               EQU              0x00000200
+                               EQU              0x00000080
    65 00000000 00000400 
                        USR_Stack_Size
                                EQU              0x00000400
    66 00000000         
-   68 00000000 00000408 
+   68 00000000 00000088 
                        ISR_Stack_Size
 
 
@@ -145,54 +145,54 @@ e + ABT_Stack_Size +                           FIQ_Stack_Size + IRQ_Stack_Size
                                SPACE            USR_Stack_Size
    73 00000400         __initial_sp
                                SPACE            ISR_Stack_Size
-   74 00000808         
-   75 00000808         Stack_Top
-   76 00000808         
-   77 00000808         
-   78 00000808         ;// <h> Heap Configuration
-   79 00000808         ;//   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF>
-   80 00000808         ;// </h>
-   81 00000808         
-   82 00000808 00000400 
+   74 00000488         
+   75 00000488         Stack_Top
+   76 00000488         
+   77 00000488         
+   78 00000488         ;// <h> Heap Configuration
+   79 00000488         ;//   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF>
+   80 00000488         ;// </h>
+   81 00000488         
+   82 00000488 00000000 
                        Heap_Size
-                               EQU              0x00000400
-   83 00000808         
-   84 00000808                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+                               EQU              0x00000000
+   83 00000488         
+   84 00000488                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    85 00000000         __heap_base
    86 00000000         Heap_Mem
                                SPACE            Heap_Size
-   87 00000400         __heap_limit
-   88 00000400         
-   89 00000400         
-   90 00000400         ; VPBDIV definitions
-   91 00000400 E01FC100 
+   87 00000000         __heap_limit
+   88 00000000         
+   89 00000000         
+   90 00000000         ; VPBDIV definitions
+   91 00000000 E01FC100 
                        VPBDIV  EQU              0xE01FC100  ; VPBDIV Address
-   92 00000400         
-   93 00000400         ;// <e> VPBDIV Setup
-   94 00000400         ;// <i> Peripheral Bus Clock Rate
-   95 00000400         ;//   <o1.0..1>   VPBDIV: VPB Clock
-   96 00000400         ;//               <0=> VPB Clock = CPU Clock / 4
-   97 00000400         ;//               <1=> VPB Clock = CPU Clock
-   98 00000400         ;//               <2=> VPB Clock = CPU Clock / 2
-   99 00000400         ;//   <o1.4..5>   XCLKDIV: XCLK Pin
-  100 00000400         ;//               <0=> XCLK Pin = CPU Clock / 4
-  101 00000400         ;//               <1=> XCLK Pin = CPU Clock
-  102 00000400         ;//               <2=> XCLK Pin = CPU Clock / 2
-  103 00000400         ;// </e>
-  104 00000400 00000000 
+   92 00000000         
+   93 00000000         ;// <e> VPBDIV Setup
+   94 00000000         ;// <i> Peripheral Bus Clock Rate
+   95 00000000         ;//   <o1.0..1>   VPBDIV: VPB Clock
+   96 00000000         ;//               <0=> VPB Clock = CPU Clock / 4
+   97 00000000         ;//               <1=> VPB Clock = CPU Clock
+   98 00000000         ;//               <2=> VPB Clock = CPU Clock / 2
+   99 00000000         ;//   <o1.4..5>   XCLKDIV: XCLK Pin
+  100 00000000         ;//               <0=> XCLK Pin = CPU Clock / 4
+  101 00000000         ;//               <1=> XCLK Pin = CPU Clock
+  102 00000000         ;//               <2=> XCLK Pin = CPU Clock / 2
+  103 00000000         ;// </e>
+  104 00000000 00000000 
                        VPBDIV_SETUP
                                EQU              0
-  105 00000400 00000000 
+  105 00000000 00000000 
                        VPBDIV_Val
                                EQU              0x00000000
-  106 00000400         
-  107 00000400         
-  108 00000400         ; Phase Locked Loop (PLL) definitions
-  109 00000400 E01FC080 
+  106 00000000         
+  107 00000000         
+  108 00000000         ; Phase Locked Loop (PLL) definitions
+  109 00000000 E01FC080 
                        PLL_BASE
                                EQU              0xE01FC080  ; PLL Base Address
-  110 00000400 00000000 
+  110 00000000 00000000 
 
 
 
@@ -202,127 +202,127 @@ ARM Macro Assembler    Page 4
                        PLLCON_OFS
                                EQU              0x00        ; PLL Control Offse
                                                             t
-  111 00000400 00000004 
+  111 00000000 00000004 
                        PLLCFG_OFS
                                EQU              0x04        ; PLL Configuration
                                                              Offset
-  112 00000400 00000008 
+  112 00000000 00000008 
                        PLLSTAT_OFS
                                EQU              0x08        ; PLL Status Offset
                                                             
-  113 00000400 0000000C 
+  113 00000000 0000000C 
                        PLLFEED_OFS
                                EQU              0x0C        ; PLL Feed Offset
-  114 00000400 00000001 
+  114 00000000 00000001 
                        PLLCON_PLLE
                                EQU              (1<<0)      ; PLL Enable
-  115 00000400 00000002 
+  115 00000000 00000002 
                        PLLCON_PLLC
                                EQU              (1<<1)      ; PLL Connect
-  116 00000400 0000001F 
+  116 00000000 0000001F 
                        PLLCFG_MSEL
                                EQU              (0x1F<<0)   ; PLL Multiplier
-  117 00000400 00000060 
+  117 00000000 00000060 
                        PLLCFG_PSEL
                                EQU              (0x03<<5)   ; PLL Divider
-  118 00000400 00000400 
+  118 00000000 00000400 
                        PLLSTAT_PLOCK
                                EQU              (1<<10)     ; PLL Lock Status
-  119 00000400         
-  120 00000400         ;// <e> PLL Setup
-  121 00000400         ;//   <o1.0..4>   MSEL: PLL Multiplier Selection
-  122 00000400         ;//               <1-32><#-1>
-  123 00000400         ;//               <i> M Value
-  124 00000400         ;//   <o1.5..6>   PSEL: PLL Divider Selection
-  125 00000400         ;//               <0=> 1   <1=> 2   <2=> 4   <3=> 8
-  126 00000400         ;//               <i> P Value
-  127 00000400         ;// </e>
-  128 00000400 00000000 
+  119 00000000         
+  120 00000000         ;// <e> PLL Setup
+  121 00000000         ;//   <o1.0..4>   MSEL: PLL Multiplier Selection
+  122 00000000         ;//               <1-32><#-1>
+  123 00000000         ;//               <i> M Value
+  124 00000000         ;//   <o1.5..6>   PSEL: PLL Divider Selection
+  125 00000000         ;//               <0=> 1   <1=> 2   <2=> 4   <3=> 8
+  126 00000000         ;//               <i> P Value
+  127 00000000         ;// </e>
+  128 00000000 00000000 
                        PLL_SETUP
                                EQU              0
-  129 00000400 00000024 
+  129 00000000 00000024 
                        PLLCFG_Val
                                EQU              0x00000024
-  130 00000400         
-  131 00000400         
-  132 00000400         ; Memory Accelerator Module (MAM) definitions
-  133 00000400 E01FC000 
+  130 00000000         
+  131 00000000         
+  132 00000000         ; Memory Accelerator Module (MAM) definitions
+  133 00000000 E01FC000 
                        MAM_BASE
                                EQU              0xE01FC000  ; MAM Base Address
-  134 00000400 00000000 
+  134 00000000 00000000 
                        MAMCR_OFS
                                EQU              0x00        ; MAM Control Offse
                                                             t
-  135 00000400 00000004 
+  135 00000000 00000004 
                        MAMTIM_OFS
                                EQU              0x04        ; MAM Timing Offset
                                                             
-  136 00000400         
+  136 00000000         
 
 
 
 ARM Macro Assembler    Page 5 
 
 
-  137 00000400         ;// <e> MAM Setup
-  138 00000400         ;//   <o1.0..1>   MAM Control
-  139 00000400         ;//               <0=> Disabled
-  140 00000400         ;//               <1=> Partially Enabled
-  141 00000400         ;//               <2=> Fully Enabled
-  142 00000400         ;//               <i> Mode
-  143 00000400         ;//   <o2.0..2>   MAM Timing
-  144 00000400         ;//               <0=> Reserved  <1=> 1   <2=> 2   <3=> 
+  137 00000000         ;// <e> MAM Setup
+  138 00000000         ;//   <o1.0..1>   MAM Control
+  139 00000000         ;//               <0=> Disabled
+  140 00000000         ;//               <1=> Partially Enabled
+  141 00000000         ;//               <2=> Fully Enabled
+  142 00000000         ;//               <i> Mode
+  143 00000000         ;//   <o2.0..2>   MAM Timing
+  144 00000000         ;//               <0=> Reserved  <1=> 1   <2=> 2   <3=> 
                        3
-  145 00000400         ;//               <4=> 4         <5=> 5   <6=> 6   <7=> 
+  145 00000000         ;//               <4=> 4         <5=> 5   <6=> 6   <7=> 
                        7
-  146 00000400         ;//               <i> Fetch Cycles
-  147 00000400         ;// </e>
-  148 00000400 00000001 
+  146 00000000         ;//               <i> Fetch Cycles
+  147 00000000         ;// </e>
+  148 00000000 00000001 
                        MAM_SETUP
                                EQU              1
-  149 00000400 00000002 
+  149 00000000 00000002 
                        MAMCR_Val
                                EQU              0x00000002
-  150 00000400 00000004 
+  150 00000000 00000004 
                        MAMTIM_Val
                                EQU              0x00000004
-  151 00000400         
-  152 00000400         
-  153 00000400         ; External Memory Controller (EMC) definitions
-  154 00000400 FFE00000 
+  151 00000000         
+  152 00000000         
+  153 00000000         ; External Memory Controller (EMC) definitions
+  154 00000000 FFE00000 
                        EMC_BASE
                                EQU              0xFFE00000  ; EMC Base Address
-  155 00000400 00000000 
+  155 00000000 00000000 
                        BCFG0_OFS
                                EQU              0x00        ; BCFG0 Offset
-  156 00000400 00000004 
+  156 00000000 00000004 
                        BCFG1_OFS
                                EQU              0x04        ; BCFG1 Offset
-  157 00000400 00000008 
+  157 00000000 00000008 
                        BCFG2_OFS
                                EQU              0x08        ; BCFG2 Offset
-  158 00000400 0000000C 
+  158 00000000 0000000C 
                        BCFG3_OFS
                                EQU              0x0C        ; BCFG3 Offset
-  159 00000400         
-  160 00000400         ;// <e> External Memory Controller (EMC)
-  161 00000400 00000000 
+  159 00000000         
+  160 00000000         ;// <e> External Memory Controller (EMC)
+  161 00000000 00000000 
                        EMC_SETUP
                                EQU              0
-  162 00000400         
-  163 00000400         ;//   <e> Bank Configuration 0 (BCFG0)
-  164 00000400         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
-  165 00000400         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
-  166 00000400         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
-  167 00000400         ;//     <o1.10>     RBLE: Read Byte Lane Enable
-  168 00000400         ;//     <o1.26>     WP: Write Protect
-  169 00000400         ;//     <o1.27>     BM: Burst ROM
-  170 00000400         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
+  162 00000000         
+  163 00000000         ;//   <e> Bank Configuration 0 (BCFG0)
+  164 00000000         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
+  165 00000000         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
+  166 00000000         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
+  167 00000000         ;//     <o1.10>     RBLE: Read Byte Lane Enable
+  168 00000000         ;//     <o1.26>     WP: Write Protect
+  169 00000000         ;//     <o1.27>     BM: Burst ROM
+  170 00000000         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
                        16-bit
-  171 00000400         ;//                                   <2=> 32-bit  <3=> 
+  171 00000000         ;//                                   <2=> 32-bit  <3=> 
                        Reserved
-  172 00000400         ;//   </e>
-  173 00000400 00000000 
+  172 00000000         ;//   </e>
+  173 00000000 00000000 
 
 
 
@@ -331,61 +331,61 @@ ARM Macro Assembler    Page 6
 
                        BCFG0_SETUP
                                EQU              0
-  174 00000400 0000FBEF 
+  174 00000000 0000FBEF 
                        BCFG0_Val
                                EQU              0x0000FBEF
-  175 00000400         
-  176 00000400         ;//   <e> Bank Configuration 1 (BCFG1)
-  177 00000400         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
-  178 00000400         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
-  179 00000400         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
-  180 00000400         ;//     <o1.10>     RBLE: Read Byte Lane Enable
-  181 00000400         ;//     <o1.26>     WP: Write Protect
-  182 00000400         ;//     <o1.27>     BM: Burst ROM
-  183 00000400         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
+  175 00000000         
+  176 00000000         ;//   <e> Bank Configuration 1 (BCFG1)
+  177 00000000         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
+  178 00000000         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
+  179 00000000         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
+  180 00000000         ;//     <o1.10>     RBLE: Read Byte Lane Enable
+  181 00000000         ;//     <o1.26>     WP: Write Protect
+  182 00000000         ;//     <o1.27>     BM: Burst ROM
+  183 00000000         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
                        16-bit
-  184 00000400         ;//                                   <2=> 32-bit  <3=> 
+  184 00000000         ;//                                   <2=> 32-bit  <3=> 
                        Reserved
-  185 00000400         ;//   </e>
-  186 00000400 00000000 
+  185 00000000         ;//   </e>
+  186 00000000 00000000 
                        BCFG1_SETUP
                                EQU              0
-  187 00000400 0000FBEF 
+  187 00000000 0000FBEF 
                        BCFG1_Val
                                EQU              0x0000FBEF
-  188 00000400         
-  189 00000400         ;//   <e> Bank Configuration 2 (BCFG2)
-  190 00000400         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
-  191 00000400         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
-  192 00000400         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
-  193 00000400         ;//     <o1.10>     RBLE: Read Byte Lane Enable
-  194 00000400         ;//     <o1.26>     WP: Write Protect
-  195 00000400         ;//     <o1.27>     BM: Burst ROM
-  196 00000400         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
+  188 00000000         
+  189 00000000         ;//   <e> Bank Configuration 2 (BCFG2)
+  190 00000000         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
+  191 00000000         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
+  192 00000000         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
+  193 00000000         ;//     <o1.10>     RBLE: Read Byte Lane Enable
+  194 00000000         ;//     <o1.26>     WP: Write Protect
+  195 00000000         ;//     <o1.27>     BM: Burst ROM
+  196 00000000         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
                        16-bit
-  197 00000400         ;//                                   <2=> 32-bit  <3=> 
+  197 00000000         ;//                                   <2=> 32-bit  <3=> 
                        Reserved
-  198 00000400         ;//   </e>
-  199 00000400 00000000 
+  198 00000000         ;//   </e>
+  199 00000000 00000000 
                        BCFG2_SETUP
                                EQU              0
-  200 00000400 0000FBEF 
+  200 00000000 0000FBEF 
                        BCFG2_Val
                                EQU              0x0000FBEF
-  201 00000400         
-  202 00000400         ;//   <e> Bank Configuration 3 (BCFG3)
-  203 00000400         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
-  204 00000400         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
-  205 00000400         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
-  206 00000400         ;//     <o1.10>     RBLE: Read Byte Lane Enable
-  207 00000400         ;//     <o1.26>     WP: Write Protect
-  208 00000400         ;//     <o1.27>     BM: Burst ROM
-  209 00000400         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
+  201 00000000         
+  202 00000000         ;//   <e> Bank Configuration 3 (BCFG3)
+  203 00000000         ;//     <o1.0..3>   IDCY: Idle Cycles <0-15>
+  204 00000000         ;//     <o1.5..9>   WST1: Wait States 1 <0-31>
+  205 00000000         ;//     <o1.11..15> WST2: Wait States 2 <0-31>
+  206 00000000         ;//     <o1.10>     RBLE: Read Byte Lane Enable
+  207 00000000         ;//     <o1.26>     WP: Write Protect
+  208 00000000         ;//     <o1.27>     BM: Burst ROM
+  209 00000000         ;//     <o1.28..29> MW: Memory Width  <0=>  8-bit  <1=> 
                        16-bit
-  210 00000400         ;//                                   <2=> 32-bit  <3=> 
+  210 00000000         ;//                                   <2=> 32-bit  <3=> 
                        Reserved
-  211 00000400         ;//   </e>
-  212 00000400 00000000 
+  211 00000000         ;//   </e>
+  212 00000000 00000000 
                        BCFG3_SETUP
                                EQU              0
 
@@ -394,31 +394,31 @@ ARM Macro Assembler    Page 6
 ARM Macro Assembler    Page 7 
 
 
-  213 00000400 0000FBEF 
+  213 00000000 0000FBEF 
                        BCFG3_Val
                                EQU              0x0000FBEF
-  214 00000400         
-  215 00000400         ;// </e> End of EMC
-  216 00000400         
-  217 00000400         
-  218 00000400         ; External Memory Pins definitions
-  219 00000400 E002C014 
+  214 00000000         
+  215 00000000         ;// </e> End of EMC
+  216 00000000         
+  217 00000000         
+  218 00000000         ; External Memory Pins definitions
+  219 00000000 E002C014 
                        PINSEL2 EQU              0xE002C014  ; PINSEL2 Address
-  220 00000400 0E6149E4 
+  220 00000000 0E6149E4 
                        PINSEL2_Val
                                EQU              0x0E6149E4  ; CS0..3, OE, WE, B
                                                             LS0..3, 
-  221 00000400         ; D0..31, A2..23, JTAG Pins
-  222 00000400         
-  223 00000400         
-  224 00000400                 PRESERVE8
-  225 00000400         
-  226 00000400         
-  227 00000400         ; Area Definition and Entry Point
-  228 00000400         ;  Startup Code must be linked first at Address at which
+  221 00000000         ; D0..31, A2..23, JTAG Pins
+  222 00000000         
+  223 00000000         
+  224 00000000                 PRESERVE8
+  225 00000000         
+  226 00000000         
+  227 00000000         ; Area Definition and Entry Point
+  228 00000000         ;  Startup Code must be linked first at Address at which
                         it expects to run.
-  229 00000400         
-  230 00000400                 AREA             RESET, CODE, READONLY
+  229 00000000         
+  230 00000000                 AREA             RESET, CODE, READONLY
   231 00000000                 ARM
   232 00000000         
   233 00000000         
@@ -565,13 +565,13 @@ _Bit
   386 00000088 E321F0D1        MSR              CPSR_c, #Mode_FIQ:OR:I_Bit:OR:F
 _Bit
   387 0000008C E1A0D000        MOV              SP, R0
-  388 00000090 E2400C02        SUB              R0, R0, #FIQ_Stack_Size
+  388 00000090 E2400000        SUB              R0, R0, #FIQ_Stack_Size
   389 00000094         
   390 00000094         ;  Enter IRQ Mode and set its Stack Pointer
   391 00000094 E321F0D2        MSR              CPSR_c, #Mode_IRQ:OR:I_Bit:OR:F
 _Bit
   392 00000098 E1A0D000        MOV              SP, R0
-  393 0000009C E2400C02        SUB              R0, R0, #IRQ_Stack_Size
+  393 0000009C E2400080        SUB              R0, R0, #IRQ_Stack_Size
   394 000000A0         
   395 000000A0         ;  Enter Supervisor Mode and set its Stack Pointer
   396 000000A0 E321F0D3        MSR              CPSR_c, #Mode_SVC:OR:I_Bit:OR:F
@@ -615,16 +615,15 @@ ARM Macro Assembler    Page 10
   434 00000000 E59F000C        LDR              R0, =  Heap_Mem
   435 00000004 E59F100C        LDR              R1, =(Stack_Mem + USR_Stack_Siz
 e)
-  436 00000008 E59F200C        LDR              R2, = (Heap_Mem +      Heap_Siz
+  436 00000008 E59F2004        LDR              R2, = (Heap_Mem +      Heap_Siz
 e)
-  437 0000000C E59F300C        LDR              R3, = Stack_Mem
+  437 0000000C E59F3008        LDR              R3, = Stack_Mem
   438 00000010 E12FFF1E        BX               LR
   439 00000014                 ENDIF
   440 00000014         
   441 00000014         
   442 00000014                 END
               00000000 
-              00000400 
               00000400 
               00000000 
 Command Line: --debug --xref --apcs=interwork --depend=.\startup.d -o.\startup.
@@ -653,7 +652,7 @@ Symbol: Stack_Mem
       At line 435 in file Startup.s
       At line 437 in file Startup.s
 
-Stack_Top 00000808
+Stack_Top 00000488
 
 Symbol: Stack_Top
    Definitions
@@ -701,7 +700,7 @@ Symbol: __heap_base
    Uses
       None
 Comment: __heap_base unused
-__heap_limit 00000400
+__heap_limit 00000000
 
 Symbol: __heap_limit
    Definitions
@@ -1026,7 +1025,7 @@ Absolute symbols
    Uses
       At line 281 in file Startup.s
 Comment: EMC_SETUP used once
-FIQ_Stack_Size 00000200
+FIQ_Stack_Size 00000000
 
 Symbol: FIQ_Stack_Size
    Definitions
@@ -1047,7 +1046,7 @@ Symbol: F_Bit
       At line 391 in file Startup.s
       At line 396 in file Startup.s
 
-Heap_Size 00000400
+Heap_Size 00000000
 
 Symbol: Heap_Size
    Definitions
@@ -1056,7 +1055,7 @@ Symbol: Heap_Size
       At line 86 in file Startup.s
       At line 436 in file Startup.s
 
-IRQ_Stack_Size 00000200
+IRQ_Stack_Size 00000080
 
 Symbol: IRQ_Stack_Size
    Definitions
@@ -1065,7 +1064,7 @@ Symbol: IRQ_Stack_Size
       At line 68 in file Startup.s
       At line 393 in file Startup.s
 
-ISR_Stack_Size 00000408
+ISR_Stack_Size 00000088
 
 Symbol: ISR_Stack_Size
    Definitions

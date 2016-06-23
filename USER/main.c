@@ -33,7 +33,7 @@ unsigned char fen[3]={5,9};
 unsigned char miao[3]={0,0};
 unsigned char jj[3]="/:";
 char  hanzi[3][3]={"年","月","日"};
-char  zi[8][7]={"老师好","改变年","改变月","改变日","改变周","改变时","改变分","改变秒"};
+char  zi[8][7]={"大家好","改变年","改变月","改变日","大家好","改变时","改变分","改变秒"};
 unsigned char state_s=0,state_num[2];
  
 int FERQ = 500,FERQ1;
@@ -122,6 +122,13 @@ void __irq IRQ_Eint1(void)
 					year2--;
 					YEAR=year2;
 				break;
+				case 2:
+					month2=MONTH;
+					month2--;
+					if(month2<1)
+						month2=12;
+					MONTH=month2;
+				break;
 				case 3:
 					day2=DOM;
 					day2--;
@@ -140,6 +147,13 @@ void __irq IRQ_Eint1(void)
 					if(day2<2)
 						day2=30;						
 					DOM=day2;
+				break;
+				case 5:
+					hour2=HOUR;
+					hour2--;
+					if(hour2<0)
+						hour2=24;
+					HOUR=hour2;
 				break;
 
 				case 6:
